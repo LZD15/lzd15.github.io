@@ -1,0 +1,23 @@
+<title>作者常用资源</title>
+<h1>作者常用资源</h1>
+<h2>Minecraft 1.2.3.06 下载:https://github.com/LZD15/lzd15.github.io/files/12385270/1.2.3_06.zip<h2>
+<h2>E_R_R_O_R_4_2_2 下载:https://github.com/LZD15/lzd15.github.io/files/12385515/ERROR422.zip</h2>
+<h2>Minecraft 1.20.1 自制材质包:https://github.com/LZD15/lzd15.github.io/files/12385616/1.20.1.zip</h2>
+<h4>注:不是我的东西太少,是因为Github传文件有大小限制qwq<h4>
+  <p id="time"></p>
+  <script>
+    var time = document.getElementById("time");
+    setInterval(function(){
+      var date = new Date();
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var day = date.getDate();
+      var hour = date.getHours();
+      var minute = date.getMinutes();
+      var second = date.getSeconds();
+      var week = date.getDay();
+      var weekArray = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+      var weekStr = weekArray[week];
+      time.innerHTML = year + "年" + month + "月" + day + "日 " + hour + ":" + minute + ":" + second + " " + weekStr;
+    }, 1000);
+  </script>
