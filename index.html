@@ -1,4 +1,4 @@
-<tilte>language<tilte>
+<h1>language</h1>
   <a href="zh_cn">zh_cn</a>
 <p id="time"></p>
 <script>
@@ -11,9 +11,9 @@
     var hour = date.getHours();
     var minute = date.getMinutes();
     var second = date.getSeconds();
-    var week = date.getDay();
-    var weekArray = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+    var week = date.getDay()
+    var weekArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     var weekStr = weekArray[week];
-    time.innerHTML = year + "年" + month + "月" + day + "日 " + hour + ":" + minute + ":" + second + " " + weekStr;
+    time.innerHTML = year + "year" + month + "month" + day + "day " + hour + ":" + minute + ":" + second + " " + weekStr;
   }, 1000);
 </script>
