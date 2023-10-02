@@ -1,19 +1,2 @@
 <h1>language</h1>
   <a href="zh_cn">zh_cn</a>
-<p id="time"></p>
-<script>
-  var time = document.getElementById("time");
-  setInterval(function(){
-    var date = new Date();
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var day = date.getDate();
-    var hour = date.getHours();
-    var minute = date.getMinutes();
-    var second = date.getSeconds();
-    var week = date.getDay()
-    var weekArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    var weekStr = weekArray[week];
-    time.innerHTML = year + "year" + month + "month" + day + "day " + hour + ":" + minute + ":" + second + " " + weekStr;
-  }, 1000);
-</script>
