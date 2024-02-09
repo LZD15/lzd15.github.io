@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>烟花效果</title>
+    <title>鼠标左键试试...</title>
     <style>
         body {
             margin: 0;
@@ -25,14 +25,14 @@
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height / 2;
         this.color = 'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')';
-        this.radius = Math.random() * 3 + 2;
+        this.radius = Math.random() * 10 + 9;
         this.velocity = {
-            x: Math.random() * 6 - 3,
-            y: Math.random() * 6 - 3
+            x: Math.random() * 12 - 6,
+            y: Math.random() * 12 - 6
         };
         this.gravity = 0.1;
         this.alpha = 1;
-        this.decay = Math.random() * 0.015 + 0.015;
+        this.decay = Math.random() * 0.0015 + 0.0015;
     }
 
     Firework.prototype.draw = function() {
@@ -40,7 +40,7 @@
         ctx.moveTo(this.x, this.y);
         ctx.lineTo(this.x + this.radius * Math.cos(this.velocity.x), this.y + this.radius * Math.sin(this.velocity.y));
         ctx.strokeStyle = this.color;
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 1000;
         ctx.stroke();
     };
 
