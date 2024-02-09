@@ -1,56 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            padding: 20px;
-        }
+import pygame
+import math
+import random
 
-        h1 {
-            background-color: #ffffff;
-            color: rgb(0, 0, 0);
-            padding: 20px;
-            text-align: center;
-        }
+# 初始化
+pygame.init()
+screen = pygame.display.set_mode((800, 600))
+pygame.display.set_caption("Fireworks")
+clock = pygame.time.Clock()
 
-        p {
-            margin: 10px 0;
-        }
+# 定义烟花颜色
+colors = [
+    (255, 0, 0),  # Red
+    (255, 165, 0),  # Orange
+    (255, 255, 0),  # Yellow
+    (0, 255, 0),  # Green
+    (0, 0, 255),  # Blue
+    (75, 0, 130),  # Indigo
+    (255, 0, 255),  # Pink
+    (128, 0, 128),  # Purple
+]
 
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
+# 定义烟花粒子
+class Firework:
+    def __init__(self):
+        self.x = random.randint(0, 800)
+        self.y = 600
+        self.size = 20
+        self.color = random.choice(colors)
+        self.speed = random.uniform(1, 5)
+        self.direction = random.uniform(0, 2 * math.pi)
 
-        li {
-            background-color: #ffffff;
-            border: 1px solid #ffffff;
-            padding: 10px;
-            margin: 5px 0;
-        }
+    def move(self):
+        self.y -= self.speed * math.sin(self.direction)
+        self.x += self.speed * math.cos(self.direction)
 
-        li:hover {
-            background-color: #ffffff;
-        }
+    def draw(self):
+        pygame.draw.circle(screen, self.color, (int(self.x), int(self.y)), self.size)
 
-        a {
-            text-decoration: none;
-            color: #000000;
-        }
+# 创建烟花粒子
+fireworks = [Firework() for _ in range(100)]
 
-        a:hover {
-            color: #000000;
-        }
-    </style>
-</head>
-<body>
-    <h1>你好!</h1>
-    <a href="1.html">论文</a>
-</body>
-</html>
+# 游戏循环
+running = True
+while running:
+    screen.fill((0, 0, 0))
+
+    # 绘制烟花
+    for firework in fireworks:
+        firework.move()
+        firework.draw()
+
+    # 检测关闭窗口
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    # 更新屏幕
+    pygame.display.flip()
+    clock.tick(60)
+
+# 退出
+pygame.quit()
