@@ -1,1 +1,18 @@
-<img src="uwp4271069.webp" alt="图像的描述" width="图像的宽度" height="图像的高度">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bing Image Search</title>
+</head>
+<body>
+    <input type="text" id="searchQuery" placeholder="键入你要搜索的问题">
+    <button onclick="searchImage()">搜索</button>
+
+    <script>
+        function searchImage() {
+            var searchQuery = document.getElementById("searchQuery").value;
+            var url = "https://cn.bing.com/search?q=" + searchQuery;
+            window.open(url);
+        }
+    </script>
+</body>
+</html>
