@@ -83,5 +83,25 @@
 
     animate();
 </script>
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <input type="text" id="searchQuery" placeholder="键入你要搜索的问题">
+    <button onclick="searchQuery()">搜索</button>
+
+    <script>
+        function searchQuery() {
+            var searchQuery = document.getElementById("searchQuery").value;
+            var url = "https://cn.bing.com/search?q=" + searchQuery;
+            window.open(url);
+        }
+    </script>
+      <script>
+        function redirect() {
+          window.location.href = "https://www.example.com";
+        }
+    </script>
 </body>
 </html>
