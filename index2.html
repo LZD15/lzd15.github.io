@@ -1,88 +1,135 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="index2.css">
-    <script src="index2.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小工具</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
     <style>
         body {
-            margin: 0;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
         }
-        canvas {
-            display: block;
+        .container {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        .tool {
+            margin-bottom: 20px;
+        }
+        .tool input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+        .tool button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .tool button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-<canvas id="fireworks"></canvas>
-<script>
-    var canvas = document.getElementById('fireworks');
-    var ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    <div class="container">
+        <h1>小工具</h1>
+        <div class="tool">
+            <input type="text" placeholder="输入第一个数字">
+            <button onclick="add()">加</button>
+            <button onclick="subtract()">减</button>
+            <button onclick="multiply()">乘</button>
+            <button onclick="divide()">除</button>
+        </div>
+        <div class="tool">
+            <input type="text" placeholder="输入第二个数字">
+            <button onclick="add()">加</button>
+            <button onclick="subtract()">减</button>
+            <button onclick="multiply()">乘</button>
+            <button onclick="divide()">除</button>
+        </div>
+        <div class="tool">
+            <input type="text" placeholder="输入第三个数字">
+            <button onclick="add()">加</button>
+            <button onclick="subtract()">减</button>
+            <button onclick="multiply()">乘</button>
+            <button onclick="divide()">除</button>
+        </div>
+        <div class="tool">
+            <input type="text" placeholder="输入第四个数字">
+            <button onclick="add()">加</button>
+            <button onclick="subtract()">减</button>
+            <button onclick="multiply()">乘</button>
+            <button onclick="divide()">除</button>
+        </div>
+        <div class="tool">
+            <input type="text" placeholder="输入第五个数字">
+            <button onclick="add()">加</button>
+            <button onclick="subtract()">减</button>
+            <button onclick="multiply()">乘</button>
+            <button onclick="divide()">除</button>
+        </div>
+        <div class="tool">
+            <button onclick="reset()">重置</button>
+        </div>
+    </div>
 
-    function Firework() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height / 2;
-        this.color = 'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')';
-        this.radius = Math.random() * 10 + 9;
-        this.velocity = {
-            x: Math.random() * 12 - 6,
-            y: Math.random() * 12 - 6
-        };
-        this.gravity = 0.1;
-        this.alpha = 2;
-        this.decay = Math.random() * 0.0015 + 0.0015;
-    }
-
-    Firework.prototype.draw = function() {
-        ctx.beginPath();
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.x + this.radius * Math.cos(this.velocity.x), this.y + this.radius * Math.sin(this.velocity.y));
-        ctx.strokeStyle = this.color;
-        ctx.lineWidth = 100;
-        ctx.stroke();
-    };
-
-    Firework.prototype.update = function() {
-        this.velocity.y += this.gravity;
-        this.x += this.velocity.x;
-        this.y += this.velocity.y;
-        this.alpha -= this.decay;
-
-        if (this.alpha <= 0) {
-            this.alpha = 0;
-        }
-    };
-
-    var fireworks = [];
-
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        for (var i = 0; i < fireworks.length; i++) {
-            var firework = fireworks[i];
-            firework.draw();
-            firework.update();
-
-            if (firework.alpha === 0) {
-                fireworks.splice(i, 5);
-                i--;
-            }
+    <script>
+        function add() {
+            const inputs = document.querySelectorAll('.tool input');
+            let sum = 0;
+            inputs.forEach(input => {
+                sum += parseInt(input.value);
+            });
+            alert(`结果: ${sum}`);
         }
 
-        requestAnimationFrame(animate);
-    }
+        function subtract() {
+            const inputs = document.querySelectorAll('.tool input');
+            let sum = 0;
+            inputs.forEach(input => {
+                sum -= parseInt(input.value);
+            });
+            alert(`结果: ${sum}`);
+        }
 
-    document.body.addEventListener('click', function(event) {
-        var firework = new Firework();
-        firework.x = event.clientX;
-        firework.y = event.clientY;
-        fireworks.push(firework);
-    });
+        function multiply() {
+            const inputs = document.querySelectorAll('.tool input');
+            let product = 1;
+            inputs.forEach(input => {
+                product *= parseInt(input.value);
+            });
+            alert(`结果: ${product}`);
+        }
 
-    animate();
-</script>
-</html>
+        function divide() {
+            const inputs = document.querySelectorAll('.tool input');
+            let quotient = 1;
+            inputs.forEach(input => {
+                if (input.value !== '0') {
+                    quotient /= parseInt(input.value);
+                } else {
+                    alert('除数不能为0');
+                    return;
+                }
+            });
+            alert(`结果: ${quotient}`);
+        }
+
+        function reset() {
+            const inputs = document.querySelectorAll('.tool input');
+            inputs.forEach(input => {
+                input.value = '';
+            });
+        }
