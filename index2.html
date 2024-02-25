@@ -2,7 +2,9 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>鼠标左键试试...</title>
+    <title></title>
+    <link rel="stylesheet" href="index2.css">
+    <script src="index2.js"></script>
     <style>
         body {
             margin: 0;
@@ -31,7 +33,7 @@
             y: Math.random() * 12 - 6
         };
         this.gravity = 0.1;
-        this.alpha = 1;
+        this.alpha = 2;
         this.decay = Math.random() * 0.0015 + 0.0015;
     }
 
@@ -66,7 +68,7 @@
             firework.update();
 
             if (firework.alpha === 0) {
-                fireworks.splice(i, 1);
+                fireworks.splice(i, 5);
                 i--;
             }
         }
@@ -83,25 +85,4 @@
 
     animate();
 </script>
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-    <input type="text" id="searchQuery" placeholder="键入你要搜索的问题">
-    <button onclick="searchQuery()">搜索</button>
 
-    <script>
-        function searchQuery() {
-            var searchQuery = document.getElementById("searchQuery").value;
-            var url = "https://cn.bing.com/search?q=" + searchQuery;
-            window.open(url);
-        }
-    </script>
-      <script>
-        function redirect() {
-          window.location.href = "https://www.example.com";
-        }
-    </script>
-</body>
-</html>
