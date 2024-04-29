@@ -1,5 +1,5 @@
 (()=>{
-    const frontend = "https://limestart.cn/?from=ext";
+    const frontend = "index.html";
     const isAndroid = navigator.userAgent.includes("Android");
     const isEdge = navigator.userAgent.includes("Edg/");
     const isFirefox = navigator.userAgent.includes("Firefox/");
