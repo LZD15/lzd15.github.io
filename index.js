@@ -1,5 +1,4 @@
 (()=>{
-    const frontend = "index.html";
     const isAndroid = navigator.userAgent.includes("Android");
     const isEdge = navigator.userAgent.includes("Edg/");
     const isFirefox = navigator.userAgent.includes("Firefox/");
